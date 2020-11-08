@@ -2,28 +2,58 @@
 class Calculator:
     # Initialise so as to take user input for numbers
     def __init__(self):
-        self.num1=int(input("Please enter number 1: "))
-        self.num2=int(input("Please enter number 2: "))
+        # Display message
+        self.display=print("Calculator Programme. Please enter numbers only.")
 
-        # Check the inputs are numbers
-        # while self.num1==str:
-        #     return input("Invalid input, please try again:  ")
+
     # Define an operations function
     def operations(self):
-        self.operation=input("What operation would you like to perform: ").lower()
-        if self.operation =="add" or self.operation=="addition" or self.operation=="+":
+        # Take user input, guiding user to follow certain input so the split method is effective
+        self.input = input("Please enter your calculation separated with spaces (e.g. 12 * 37)  ").split()
+        # Identify number 1, number 2, and the operator.
+        self.num1 = int(self.input[0])
+        self.num2 = int(self.input[-1])
+        self.operation=self.input[1]
+        # Depending on the operator, perform the corresponding operation
+        if self.operation == "+":
             result= self.num1 + self.num2
-        elif self.operation =="subtract" or self.operation=="subtraction" or self.operation=="minus" or self.operation=="-":
-            result= self.num1 - self.num2
-        elif self.operation =="multiply" or self.operation=="multiplication" or self.operation=="times" or self.operation=="*" or self.operation=="x":
-            result= self.num1 * self.num2
-        elif self.operation =="divide" or self.operation=="division" or self.operation=="div" or self.operation=="/" :
-            result= self.num1 / self.num2
+        elif self.operation == "-":
+            result= int(self.num1) - self.num2
+        elif self.operation == "*":
+            result= int(self.num1) * self.num2
+        elif self.operation == "/":
+            result= int(self.num1) / self.num2
+        # If the operator is invalid, ask to re-enter
         else:
             return input("Invalid operation, please try again")
 
         return result
+    # Create divisble_by function
+    def divisible_by(self):
+        # Ask user to input number 1 and number 2
+        self.num1 = int(input("Please enter number 1: "))
+        self.num2 = int(input("Please enter number 2: "))
+        print("{} is divisible by {}?".format(self.num1, self.num2))
+        # If divisble, return True, otherwise, False
+        if self.num1 % self.num2 == 0:
+            return True
+        else:
+            return False
+
+    # Create area function.
+    def area(self):
+        # Ask user to input height and length
+        self.length = int(input("Please enter length: "))
+        self.height = int(input("Please enter height: "))
+        result = (self.length * self.height) / 2
+        # Return as a formatted string
+        return "The area of a right-angle triangle with sides {} units by {} units is {} units squared ".format(self.length,self.height,result)
 
 
-calc_test=Calculator()
-print(calc_test.operations())
+    # Create converter method
+    def converter(self):
+        # Ask user to input the number they wish to convert
+        self.number = int(input("Converter cm-->inches  \nPlease enter the number you wish to convert: "))
+        result = int(self.number) / 2.54
+        # Return as a formatted string
+        return "{}cm is equivalent to {} inches.".format(self.number, result)
