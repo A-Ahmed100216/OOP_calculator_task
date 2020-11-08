@@ -1,4 +1,4 @@
-# Task - OOP Calculator
+# Exercise - OOP Calculator
 
 ### Summary
 Build a basic Object Oriented Calculator
